@@ -10,4 +10,7 @@ COPY . .
 
 EXPOSE 80
 
+ENV MONGODB_USER=userAdmin
+ENV MONGODB_PASSWORD=superPassword
+
 CMD ["npm", "run", "server"]
