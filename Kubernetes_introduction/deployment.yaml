@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: third-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: third-app
+  template:
+    metadata:
+      labels:
+        app: third-app
+    spec:
+      containers:
+        - name: second-node
+          image: estonian/django:ver3

@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: third-app
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8000
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: third-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: third-app
+  template:
+    metadata:
+      labels:
+        app: third-app
+    spec:
+      containers:
+        - name: second-node
+          image: estonian/django:ver3
+          imagePullPolicy: Always
+        
